@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ucapan Valentine untuk Gebetan</title>
+    <style>
+      body {
+        background-color: #ffe4e1;
+        overflow: hidden;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .heart {
+        position: fixed;
+        color: hotpink;
+        font-size: 24px;
+        animation: float 4s linear infinite;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) translateX(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-10vh) translateX(20px);
+          opacity: 0;
+        }
+      }
+
+      .envelope {
+        width: 90%;
+        max-width: 300px;
+        background-color: #ff69b4;
+        border-radius: 15px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        padding: 20px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .heart-button {
+        background-color: #ff1493;
+        color: white;
+        font-size: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px auto;
+        cursor: pointer;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .letter {
+        display: none;
+        width: 90%;
+        max-width: 400px;
+        background: white;
+        border-radius: 15px;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        font-size: 16px;
+        text-align: left;
+        border: 4px solid #ff1493;
+      }
+
+      @media (max-width: 480px) {
+        .heart {
+          font-size: 18px;
+        }
+        .heart-button {
+          font-size: 24px;
+          width: 50px;
+          height: 50px;
+        }
+        .letter {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function createHearts() {
+        for (let i = 0; i < 4; i++) {
+          let heart = document.createElement("div");
+          heart.className = "heart";
+          heart.innerHTML = "💕";
+          heart.style.left = Math.random() * 100 + "vw";
+          heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.remove();
+          }, 5000);
+        }
+      }
+      setInterval(createHearts, 600);
+    </script>
+
+    <div class="envelope">
+      <p>Ketuk hati untuk baca surat rahasia! 😉</p>
+      <div class="heart-button" onclick="openLetter()">💖</div>
+    </div>
+
+    <div class="letter hidden" id="letter">
+      <p id="message"></p>
+    </div>
+
+    <script>
+      let letter = document.getElementById("letter");
+      let envelope = document.querySelector(".envelope");
+      let message = document.getElementById("message");
+
+      let words = [
+        "Hai kamu,",
+        "Aku tahu ini agak mendadak...",
+        "Tapi aku mau bilang sesuatu nih!",
+        "Aku suka caramu senyum, bener-bener bikin hari aku lebih cerah. 🌞",
+        "Jujur, setiap ketemu kamu tuh rasanya kayak dapat jackpot! 🎰",
+        "Kamu itu unik, lucu, dan bikin aku pengen kenal kamu lebih deket lagi... 😉",
+        "Jadi, di Hari Valentine ini...",
+        "Mau nggak kamu kasih aku kesempatan buat kenal kamu lebih jauh? 😍",
+        "Selamat Hari Valentine ya! ❤️",
+      ];
+
+      function openLetter() {
+        envelope.style.display = "none";
+        letter.style.display = "block";
+        showWords(0);
+      }
+
+      function showWords(index) {
+        if (index < words.length) {
+          setTimeout(() => {
+            message.innerHTML += words[index] + "<br>";
+            showWords(index + 1);
+          }, 600);
+        }
+      }
+    </script>
+  </body>
+</html>
